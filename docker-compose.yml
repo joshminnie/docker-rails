@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    container_name: 'mysql'
+    build:
+      context: .
+      dockerfile: docker/mysql.dockerfile
+    env_file:
+      - 'docker/mysql.env'
+    ports:
+      - '3307:3306'
+    command:
+      - '--innodb_use_native_aio=0'
+    volumes:
+      - './docker/database/data:/var/lib/mysql'
+    restart: unless-stopped
