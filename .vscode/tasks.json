@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Rails Command",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "exec",
+                "-it",
+                "app",
+                "${input:railsCommand}" // This breaks becasue it puts single quotes around the command and docker doesn't like that
+            ]
+        },
+        {
+            "label": "Migrate Database",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "exec",
+                "-it",
+                "app",
+                "rake",
+                "db:migrate"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "railsCommand",
+            "type": "promptString",
+            "description": "Rails Command To Run"
+        }
+    ],
+}
