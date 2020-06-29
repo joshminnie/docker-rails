@@ -1,0 +1,33 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Rails Command",
+      "type": "shell",
+      "command": "docker exec -it app ${input:railsCommand}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Migrate Database",
+      "type": "shell",
+      "command": "docker",
+      "args": [
+        "exec",
+        "-it",
+        "app",
+        "rake",
+        "db:migrate"
+      ],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "railsCommand",
+      "type": "promptString",
+      "description": "Rails Command To Run"
+    }
+  ],
+}

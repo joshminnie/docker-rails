@@ -5,8 +5,9 @@ default: &default
   pool: 5
   username: root
   password: password
-  port: 3307
+  port: 3306
   timeout: 5000
+  host: mysql
 
 development:
   <<: *default
