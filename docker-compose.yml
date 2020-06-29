@@ -18,9 +18,9 @@ services:
   rails:
     container_name: 'app'
     build: "docker/rails"
-    ports: 
+    ports:
       - '3000:3000'
-    volumes: 
+    volumes:
       - './demo:/usr/src/app'
     working_dir: '/usr/src/app'
     command: bash -c "rm -f tmp/pids/server.pid && bundle install && rails s -p 3000 -b '0.0.0.0'"
