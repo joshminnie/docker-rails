@@ -4,9 +4,9 @@ services:
     container_name: 'mysql'
     build:
       context: .
-      dockerfile: docker/mysql.dockerfile
+      dockerfile: docker/database/mysql.dockerfile
     env_file:
-      - 'docker/mysql.env'
+      - 'docker/database/mysql.env'
     ports:
       - '3307:3306'
     command:
